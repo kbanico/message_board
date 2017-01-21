@@ -1,0 +1,5 @@
+<%= simple_form_for @comment, url: message_comments_path(@message) do |f| %>
+  <%= f.input :content, label: "Comment" %>
+  <%= f.button :submit, :class => "btn-custom" %>
+
+<% end %>
