@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
   def create
     @message= current_user.messages.create(message_params)
     if @message.save
-      flash[:success] = "Your Message Was Created"
+      flash[:info] = "Your Message Was Created"
       redirect_to root_path
     else
       render "new"
@@ -33,17 +33,17 @@ class MessagesController < ApplicationController
 
   def update
     if @message.update(message_params)
-      flash[:success] = "Your Message Was Updated"
+      flash[:info] = "Your Message Was Updated"
       redirect_to message_path(@message)
     else
-      flash[:danger] = "Your Message Was Not Saved"
+      flash[:alert] = "Your Message Was Not Saved"
       render "edit"
     end
   end
 
   def destroy
     @message.destroy
-    flash[:success] = "Your Message Was Succesfully Deleted"
+    flash[:info] = "Your Message Was Succesfully Deleted"
     redirect_to root_path
   end
 

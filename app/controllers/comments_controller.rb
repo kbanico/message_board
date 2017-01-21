@@ -13,11 +13,11 @@ class CommentsController < ApplicationController
 
 
     if @comment.save
-      flash[:success] = "Comment was created"
+      flash[:notice] = "Comment was created"
       redirect_to message_path(@message)
-    # else
-    #   flash[:warning] = "Comment was not created"
-    #   render "new"
+    else
+      flash[:alert] = "Comment was not created either it was too short or something went wrong"
+      redirect_to message_path(@message)
     end
   end
 
@@ -35,6 +35,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
+    flash[:notice] = "Comment was deleted"
     redirect_to message_path(@message)
   end
 

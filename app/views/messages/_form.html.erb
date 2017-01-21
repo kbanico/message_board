@@ -1,5 +1,16 @@
+<% if @message.errors.any? %>
+<h2>The following errors prevented the articles from getting created</h2>
+<ul class="alert alert-danger list-unstyled">
+  <% @message.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
+
 <%= simple_form_for @message do |f| %>
   <%= f.input :title, label: "Message Title" %>
-  <%= f.input :description, label: "Message Description" %>
+  <%= f.input :description, label: "Message Description",:input_html => {:rows => 10} %>
   <%= f.button :submit %>
 <% end %>
